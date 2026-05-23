@@ -14,7 +14,6 @@ public class AsoDAO {
         this.connection = connection;
     }
 
-    // INSERT
     public void inserir(Aso aso) {
 
         String sql = """
@@ -42,7 +41,6 @@ public class AsoDAO {
         }
     }
 
-    // UPDATE
     public void atualizar(Aso aso) {
 
         String sql = """
@@ -75,7 +73,28 @@ public class AsoDAO {
         }
     }
 
-    // DELETE
+    public void atualizarResultado(Aso aso) {
+
+        String sql = """
+                UPDATE aso
+                SET resultado = ?,
+                WHERE id_aso = ?
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, aso.getResultado());
+            stmt.setLong(2, aso.getIdAso());
+
+            stmt.executeUpdate();
+
+            System.out.println("ASO atualizado com sucesso!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void deletar(Long id) {
 
         String sql = "DELETE FROM aso WHERE id_aso = ?";
@@ -93,7 +112,6 @@ public class AsoDAO {
         }
     }
 
-    // SELECT BY ID
     public Aso buscarPorId(Long id) {
 
         String sql = "SELECT * FROM aso WHERE id_aso = ?";
@@ -128,7 +146,6 @@ public class AsoDAO {
         return null;
     }
 
-    // SELECT ALL
     public List<Aso> listarTodos() {
 
         List<Aso> lista = new ArrayList<>();

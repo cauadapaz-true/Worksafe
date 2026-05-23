@@ -14,7 +14,6 @@ public class ColaboradorDAO {
         this.connection = connection;
     }
 
-    // INSERT
     public void inserir(Colaborador colaborador) {
 
         String sql = """
@@ -43,7 +42,6 @@ public class ColaboradorDAO {
         }
     }
 
-    // UPDATE
     public void atualizar(Colaborador colaborador) {
 
         String sql = """
@@ -78,14 +76,36 @@ public class ColaboradorDAO {
         }
     }
 
-    // DELETE
-    public void deletar(Long id) {
+    public void atualizarStatus(Colaborador colaborador) {
 
-        String sql = "DELETE FROM colaborador WHERE id_colaborador = ?";
+        String sql = """
+                UPDATE colaborador
+                SET status = ?,
+                WHERE cpf = ?,
+                """;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setLong(1, id);
+
+            stmt.setString(1, colaborador.getStatus());
+            stmt.setString(2, colaborador.getCpf());
+
+            stmt.executeUpdate();
+
+            System.out.println("Colaborador atualizado com sucesso!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletar(String cpf) {
+
+        String sql = "DELETE FROM colaborador WHERE cpf = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1,cpf);
 
             stmt.executeUpdate();
 
@@ -96,14 +116,13 @@ public class ColaboradorDAO {
         }
     }
 
-    // SELECT BY ID
-    public Colaborador buscarPorId(Long id) {
+    public Colaborador buscarPorCpf(String cpf) {
 
-        String sql = "SELECT * FROM colaborador WHERE id_colaborador = ?";
+        String sql = "SELECT * FROM colaborador WHERE cpf = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setLong(1, id);
+            stmt.setString(1, cpf);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -132,7 +151,6 @@ public class ColaboradorDAO {
         return null;
     }
 
-    // SELECT ALL
     public List<Colaborador> listarTodos() {
 
         List<Colaborador> lista = new ArrayList<>();
