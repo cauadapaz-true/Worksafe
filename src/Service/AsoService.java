@@ -89,7 +89,7 @@ public class AsoService {
 
             throw new IllegalArgumentException(
                     "Resultado inválido. "
-                            + "Valores permitidos: "
+                            + "Valores permitidos no tipo do ASO: "
                             + "APTO ou INAPTO.");
         }
     }
