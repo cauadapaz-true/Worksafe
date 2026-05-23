@@ -148,8 +148,7 @@ public class ColaboradorDAO {
 
     public List<Colaborador> listarTodos() {
 
-        List<Colaborador> lista =
-                new ArrayList<>();
+        List<Colaborador> lista = new ArrayList<>();
 
         String sql = """
             SELECT
@@ -167,35 +166,26 @@ public class ColaboradorDAO {
             """;
 
         try (
-                PreparedStatement stmt =
-                        connection.prepareStatement(sql);
+                PreparedStatement stmt = connection.prepareStatement(sql);
 
-                ResultSet rs =
-                        stmt.executeQuery()
+                ResultSet rs = stmt.executeQuery()
         ) {
 
             while (rs.next()) {
 
-                Colaborador colaborador =
-                        new Colaborador();
+                Colaborador colaborador = new Colaborador();
 
-                colaborador.setIdColaborador(
-                        rs.getLong("id_colaborador"));
+                colaborador.setIdColaborador(rs.getLong("id_colaborador"));
 
-                colaborador.setNome(
-                        rs.getString("nome"));
+                colaborador.setNome(rs.getString("nome"));
 
-                colaborador.setCpf(
-                        rs.getString("cpf"));
+                colaborador.setCpf(rs.getString("cpf"));
 
-                colaborador.setStatus(
-                        rs.getString("status"));
+                colaborador.setStatus(rs.getString("status"));
 
-                colaborador.setNomeEmpresa(
-                        rs.getString("razao_social"));
+                colaborador.setNomeEmpresa(rs.getString("razao_social"));
 
-                colaborador.setNomeCargo(
-                        rs.getString("nome_cargo"));
+                colaborador.setNomeCargo(rs.getString("nome_cargo"));
 
                 lista.add(colaborador);
             }
