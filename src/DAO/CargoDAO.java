@@ -27,44 +27,21 @@ public class CargoDAO {
 
         String sql =
                 "SELECT * FROM cargo";
-
         try (
-                PreparedStatement stmt =
-                        connection.prepareStatement(sql);
-
-                ResultSet rs =
-                        stmt.executeQuery()
+                PreparedStatement stmt =connection.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()
         ) {
-
             while (rs.next()) {
-
-                Cargo cargo =
-                        new Cargo();
-
-                cargo.setIdCargo(
-                        rs.getLong("id_cargo"));
-
-                cargo.setNomeCargo(
-                        rs.getString("nome_cargo"));
-
-                cargo.setNivelRiscoCargo(
-                        rs.getString(
-                                "nivel_risco_cargo"));
-
-                cargo.setDescricaoCargo(
-                        rs.getString(
-                                "descricao_cargo"));
-
+                Cargo cargo = new Cargo();
+                cargo.setIdCargo(rs.getLong("id_cargo"));
+                cargo.setNomeCargo(rs.getString("nome_cargo"));
+                cargo.setNivelRiscoCargo(rs.getString("nivel_risco_cargo"));
+                cargo.setDescricaoCargo(rs.getString("descricao_cargo"));
                 lista.add(cargo);
             }
-
         } catch (Exception e) {
-
-            throw new RuntimeException(
-                    "Erro ao listar cargos: "
-                            + e.getMessage());
+            throw new RuntimeException("Erro ao listar cargos: " + e.getMessage());
         }
-
         return lista;
     }
 }

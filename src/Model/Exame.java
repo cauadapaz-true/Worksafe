@@ -6,9 +6,12 @@ public class Exame {
     private String resultadoExame;
     private String valorReferenciaExame;
     private String observacaoExame;
-
     private Long idAso;
     private Long idTipoExame;
+    private String nomeExame;
+    private String tipoAso;
+    private Long idColaborador;
+    private String nomeColaborador;
 
     public Exame() {
     }
@@ -25,8 +28,7 @@ public class Exame {
         return resultadoExame;
     }
 
-    public void setResultadoExame(
-            String resultadoExame) {
+    public void setResultadoExame(String resultadoExame) {
 
         this.resultadoExame =
                 resultadoExame;
@@ -36,8 +38,7 @@ public class Exame {
         return valorReferenciaExame;
     }
 
-    public void setValorReferenciaExame(
-            String valorReferenciaExame) {
+    public void setValorReferenciaExame(String valorReferenciaExame) {
 
         this.valorReferenciaExame =
                 valorReferenciaExame;
@@ -47,8 +48,7 @@ public class Exame {
         return observacaoExame;
     }
 
-    public void setObservacaoExame(
-            String observacaoExame) {
+    public void setObservacaoExame( String observacaoExame) {
 
         this.observacaoExame =
                 observacaoExame;
@@ -69,4 +69,41 @@ public class Exame {
     public void setIdTipoExame(Long idTipoExame) {
         this.idTipoExame = idTipoExame;
     }
+
+    public String getNomeExame() {
+        return nomeExame;
+    }
+
+    public void setNomeExame(String nomeExame) {
+        this.nomeExame = nomeExame;
+    }
+
+    public String getTipoAso() {
+        return tipoAso;
+    }
+
+    public void setTipoAso(String tipoAso) {
+        this.tipoAso = tipoAso;
+    }
+
+    public Long getIdColaborador() {
+        return idColaborador;
+    }
+
+    public void setIdColaborador( Long idColaborador) {
+
+        this.idColaborador =
+                idColaborador;
+    }
+
+    public String getNomeColaborador() {
+        return nomeColaborador;
+    }
+
+    public void setNomeColaborador(String nomeColaborador) {
+
+        this.nomeColaborador =
+                nomeColaborador;
+    }
+
 }

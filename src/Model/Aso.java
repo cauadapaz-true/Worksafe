@@ -11,6 +11,9 @@ public class Aso {
     private String resultado;
     private Long idColaborador;
     private Long idMedico;
+    private String observacao;
+    private String nomeColaborador;
+    private String nomeMedico;
 
     public Aso() {
     }
@@ -18,7 +21,7 @@ public class Aso {
     public Aso(Long idAso, LocalDate dataEmissao,
                LocalDate dataVencimento, String tipoAso,
                String resultado, Long idColaborador,
-               Long idMedico) {
+               Long idMedico, String observacao) {
 
         this.idAso = idAso;
         this.dataEmissao = dataEmissao;
@@ -27,6 +30,7 @@ public class Aso {
         this.resultado = resultado;
         this.idColaborador = idColaborador;
         this.idMedico = idMedico;
+        this.observacao = observacao;
     }
 
     public Long getIdAso() {
@@ -84,4 +88,29 @@ public class Aso {
     public void setIdMedico(Long idMedico) {
         this.idMedico = idMedico;
     }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String getNomeColaborador() {
+        return nomeColaborador;
+    }
+
+    public void setNomeColaborador(String nomeColaborador) {
+        this.nomeColaborador = nomeColaborador;
+    }
+
+    public String getNomeMedico() {
+        return nomeMedico;
+    }
+
+    public void setNomeMedico(String nomeMedico) {
+        this.nomeMedico = nomeMedico;
+    }
+
 }

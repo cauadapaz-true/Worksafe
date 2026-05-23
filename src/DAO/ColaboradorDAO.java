@@ -146,6 +146,7 @@ public class ColaboradorDAO {
         return null;
     }
 
+    //Uso JOIN
     public List<Colaborador> listarTodos() {
 
         List<Colaborador> lista = new ArrayList<>();
@@ -167,7 +168,6 @@ public class ColaboradorDAO {
 
         try (
                 PreparedStatement stmt = connection.prepareStatement(sql);
-
                 ResultSet rs = stmt.executeQuery()
         ) {
 

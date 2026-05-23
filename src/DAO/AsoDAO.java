@@ -21,8 +21,8 @@ public class AsoDAO {
 
         String sql = """
                 INSERT INTO aso
-                (data_emissao, data_vencimento, tipo_aso,
-                 resultado, id_colaborador, id_medico)
+                (data_emissao_aso, data_validade, tipo_aso,
+                 resultado_aso, id_colaborador, id_medico)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """;
 
@@ -50,10 +50,10 @@ public class AsoDAO {
 
         String sql = """
                 UPDATE aso
-                SET data_emissao = ?,
-                    data_vencimento = ?,
+                SET data_emissao_aso = ?,
+                    data_validade = ?,
                     tipo_aso = ?,
-                    resultado = ?,
+                    resultado_aso = ?,
                     id_colaborador = ?,
                     id_medico = ?
                 WHERE id_aso = ?
@@ -84,7 +84,7 @@ public class AsoDAO {
 
         String sql = """
                 UPDATE aso
-                SET resultado = ?
+                SET resultado_aso = ?
                 WHERE id_aso = ?
                 """;
 
@@ -134,7 +134,15 @@ public class AsoDAO {
             try (ResultSet rs = stmt.executeQuery()) {
 
                 if (rs.next()) {
-                    return mapearAso(rs);
+                    Aso aso = new Aso();
+
+                    aso.setIdAso(rs.getLong("id_aso"));
+                    aso.setDataEmissao(rs.getDate("data_emissao_aso").toLocalDate());
+                    aso.setDataVencimento(rs.getDate("data_validade").toLocalDate());
+                    aso.setTipoAso(rs.getString("tipo_aso"));
+                    aso.setResultado(rs.getString("resultado_aso"));
+                    aso.setIdColaborador(rs.getLong("id_colaborador"));
+                    return aso;
                 }
             }
 
@@ -147,11 +155,26 @@ public class AsoDAO {
         return null;
     }
 
+    //Uso JOIN
     public List<Aso> listarTodos() {
 
         List<Aso> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM aso";
+        String sql = """
+            SELECT
+                a.id_aso,
+                a.tipo_aso,
+                a.resultado_aso,
+                a.data_emissao_aso,
+                a.data_validade,
+                c.nome AS nome_colaborador,
+                m.nome_medico
+            FROM aso a
+            INNER JOIN colaborador c
+                ON a.id_colaborador = c.id_colaborador
+            INNER JOIN medico m
+                ON a.id_medico = m.id_medico
+            """;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -174,16 +197,12 @@ public class AsoDAO {
         Aso aso = new Aso();
 
         aso.setIdAso(rs.getLong("id_aso"));
-        aso.setDataEmissao(
-                rs.getDate("data_emissao").toLocalDate());
-
-        aso.setDataVencimento(
-                rs.getDate("data_vencimento").toLocalDate());
-
+        aso.setDataEmissao(rs.getDate("data_emissao_aso").toLocalDate());
+        aso.setDataVencimento(rs.getDate("data_validade").toLocalDate());
         aso.setTipoAso(rs.getString("tipo_aso"));
-        aso.setResultado(rs.getString("resultado"));
-        aso.setIdColaborador(rs.getLong("id_colaborador"));
-        aso.setIdMedico(rs.getLong("id_medico"));
+        aso.setResultado(rs.getString("resultado_aso"));
+        aso.setNomeColaborador(rs.getString("nome_colaborador"));
+        aso.setNomeMedico(rs.getString("nome_medico"));
 
         return aso;
     }
