@@ -12,10 +12,7 @@ Sistema desenvolvido para gerenciamento de ASOs (Atestados de Saúde Ocupacional
 ## Funcionalidades
 
 * Cadastro de colaboradores
-* Cadastro de cargos
-* Controle de ASO periódico
-* Cálculo automático de vencimento
-* Controle de exames ocupacionais
+* Controle de ASO 
 
 ## Equipe
 
