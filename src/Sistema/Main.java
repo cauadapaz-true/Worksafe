@@ -121,13 +121,6 @@ public class Main {
                                 "Status: "
                                         + c.getStatus());
 
-                        System.out.println(
-                                "Empresa: "
-                                        + c.getNomeEmpresa());
-
-                        System.out.println(
-                                "Cargo: "
-                                        + c.getNomeCargo());
                     }
                 }
 
