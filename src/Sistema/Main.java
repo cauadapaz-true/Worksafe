@@ -6,6 +6,7 @@ import Model.Colaborador;
 import Model.Empresa;
 import Model.Exame;
 import Model.Medico;
+import Model.ViewColaboradorCompleto;
 
 import Service.AsoService;
 import Service.CargoService;
@@ -13,6 +14,7 @@ import Service.ColaboradorService;
 import Service.EmpresaService;
 import Service.ExameService;
 import Service.MedicoService;
+import Service.ViewColaboradorCompletoService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,6 +31,7 @@ public class Main {
         CargoService cargoService = new CargoService();
         MedicoService medicoService = new MedicoService();
         ExameService exameService = new ExameService();
+        ViewColaboradorCompletoService viewService = new ViewColaboradorCompletoService();
 
         int opcao = -1;
         while (opcao != 0) {
@@ -42,14 +45,15 @@ public class Main {
             System.out.println("3 - Buscar colaborador por CPF");
             System.out.println("4 - Atualizar status");
             System.out.println("5 - Deletar colaborador");
+            System.out.println("6 - Relatório completo colaboradores");
             System.out.println();
-            System.out.println("6 - Inserir ASO");
-            System.out.println("7 - Listar ASOs");
-            System.out.println("8 - Buscar ASO por ID");
-            System.out.println("9 - Atualizar resultado ASO");
-            System.out.println("10 - Deletar ASO");
+            System.out.println("7 - Inserir ASO");
+            System.out.println("8 - Listar ASOs");
+            System.out.println("9 - Buscar ASO por ID");
+            System.out.println("10 - Atualizar resultado ASO");
+            System.out.println("11 - Deletar ASO");
             System.out.println();
-            System.out.println("11 - Listar exames");
+            System.out.println("12 - Listar exames");
             System.out.println();
             System.out.println("0 - Sair");
             System.out.print("\nEscolha uma opção: ");
@@ -176,6 +180,28 @@ public class Main {
                 }
 
                 if (opcao == 6) {
+
+                    List<ViewColaboradorCompleto> lista = viewService.listarTodos();
+
+                    System.out.println("\n===== RELATÓRIO =====");
+
+                    for (ViewColaboradorCompleto v: lista) {
+
+                        System.out.println("\nID: " + v.getIdColaborador());
+
+                        System.out.println("Nome: " + v.getNome());
+
+                        System.out.println("CPF: " + v.getCpf());
+
+                        System.out.println("Status: " + v.getStatus());
+
+                        System.out.println("Empresa: " + v.getRazaoSocial());
+
+                        System.out.println("Cargo: " + v.getNomeCargo());
+                    }
+                }
+
+                if (opcao == 7) {
                     Aso aso = new Aso();
                     System.out.println("\n===== CADASTRO ASO =====");
                     System.out.print("Data emissão (AAAA-MM-DD): ");
@@ -215,7 +241,7 @@ public class Main {
                     System.out.println("\nASO cadastrado!");
                 }
 
-                if (opcao == 7) {
+                if (opcao == 8) {
 
                     List<Aso> lista = asoService.listarTodos();
                     System.out.println("\n===== ASOS =====");
@@ -243,7 +269,7 @@ public class Main {
                     }
                 }
 
-                if (opcao == 8) {
+                if (opcao == 9) {
 
                     System.out.println("\n===== BUSCAR ASO =====");
 
@@ -273,7 +299,7 @@ public class Main {
                     }
                 }
 
-                if (opcao == 9) {
+                if (opcao == 10) {
                     System.out.println("\n===== ATUALIZAR RESULTADO =====");
 
                     System.out.print("ID ASO: ");
@@ -290,7 +316,7 @@ public class Main {
                 }
 
 
-                if (opcao == 10) {
+                if (opcao == 11) {
                     System.out.println("\n===== DELETAR ASO =====");
 
                     System.out.print("ID ASO: ");
@@ -301,7 +327,7 @@ public class Main {
                     System.out.println("\nASO deletado!");
                 }
 
-                if (opcao == 11) {
+                if (opcao == 12) {
 
                     System.out.println("\n===== LISTAR EXAMES DO ASO =====");
 
