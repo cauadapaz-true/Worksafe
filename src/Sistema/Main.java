@@ -47,15 +47,20 @@ public class Main {
             System.out.println("5 - Deletar colaborador");
             System.out.println("6 - Relatório completo colaboradores");
             System.out.println();
+
             System.out.println("7 - Inserir ASO");
             System.out.println("8 - Listar ASOs");
             System.out.println("9 - Buscar ASO por ID");
             System.out.println("10 - Atualizar resultado ASO");
             System.out.println("11 - Deletar ASO");
+            System.out.println("12 - Verificar status ASO");
             System.out.println();
-            System.out.println("12 - Listar exames");
+
+            System.out.println("13 - Listar exames");
             System.out.println();
+
             System.out.println("0 - Sair");
+
             System.out.print("\nEscolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -322,6 +327,19 @@ public class Main {
 
                 if (opcao == 12) {
 
+                    System.out.println("\n===== STATUS ASO =====");
+
+                    System.out.print("CPF do colaborador: ");
+
+                    String cpf = scanner.nextLine();
+
+                    String status = asoService.verificarStatusAso(cpf);
+
+                    System.out.println( "\nStatus do ASO: " + status);
+                }
+
+                if (opcao == 13) {
+
                     System.out.println("\n===== LISTAR EXAMES DO ASO =====");
 
                     System.out.print("Digite o ID do ASO: ");
@@ -331,8 +349,7 @@ public class Main {
 
                     if (lista.isEmpty()) {
 
-                        System.out.println(
-                                "\nNenhum exame encontrado.");
+                        System.out.println("\nNenhum exame encontrado.");
 
                     } else {
 

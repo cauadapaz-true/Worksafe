@@ -53,6 +53,11 @@ public class AsoService {
         return asoDAO.listarTodos();
     }
 
+    //Function
+    public String verificarStatusAso( String cpf) {
+        return asoDAO.verificarStatusAso(cpf);
+    }
+
     // RN-02
     private void validarDatas(java.time.LocalDate dataEmissao, java.time.LocalDate dataVencimento) {
 
