@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDate;
 
 public class Aso {
-
+//System.out.println("teste");
     private Long idAso;
     private LocalDate dataEmissao;
     private LocalDate dataVencimento;
