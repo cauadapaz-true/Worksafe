@@ -1,27 +1,12 @@
 # WorkSafe - Sistema de Gestão de ASO
 
 Sistema desenvolvido para gerenciamento de ASOs (Atestados de Saúde Ocupacional), colaboradores, exames e controle de vencimentos.
+Sistema com aplicação de CRUD completo com uso de Procedure, Function, View e uso de JOIN.
 
-## Tecnologias
+## Arquitetura
 
 * Java
 * PostgreSQL
-* IntelliJ IDEA
-* Git/GitHub
 
-## Funcionalidades
 
-* Cadastro de colaboradores
-* Controle de ASO 
 
-## Equipe
-
-* Cauã da Paz
-* Cauã Ramos
-
-## Como executar
-
-1. Clonar o projeto
-2. Abrir no IntelliJ
-3. Configurar banco PostgreSQL
-4. Executar aplicação

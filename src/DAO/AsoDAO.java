@@ -155,6 +155,28 @@ public class AsoDAO {
         return null;
     }
 
+    public String verificarStatusAso(String cpf) {
+
+        String sql = "SELECT fn_status_aso(?)";
+
+        try (
+                PreparedStatement stmt = connection.prepareStatement(sql)
+        ) {
+
+            stmt.setString(1, cpf);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException( "Erro ao verificar status do ASO.", e);
+        }
+        return "SEM ASO";
+    }
+
     //Uso JOIN
     public List<Aso> listarTodos() {
 
