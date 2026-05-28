@@ -11,6 +11,14 @@ public class Empresa {
     public Empresa() {
     }
 
+    public Empresa( Long idEmpresa, String razaoSocial, String cnpj, String setor, String cidade) {
+        this.idEmpresa = idEmpresa;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.setor = setor;
+        this.cidade = cidade;
+    }
+
     public Long getIdEmpresa() {
         return idEmpresa;
     }

@@ -18,11 +18,8 @@ public class Aso {
     public Aso() {
     }
 
-    public Aso(Long idAso, LocalDate dataEmissao,
-               LocalDate dataVencimento, String tipoAso,
-               String resultado, Long idColaborador,
-               Long idMedico, String observacao) {
-
+    public Aso(Long idAso, LocalDate dataEmissao,LocalDate dataVencimento, String tipoAso,
+               String resultado,Long idColaborador, Long idMedico) {
         this.idAso = idAso;
         this.dataEmissao = dataEmissao;
         this.dataVencimento = dataVencimento;
@@ -30,7 +27,6 @@ public class Aso {
         this.resultado = resultado;
         this.idColaborador = idColaborador;
         this.idMedico = idMedico;
-        this.observacao = observacao;
     }
 
     public Long getIdAso() {

@@ -10,6 +10,14 @@ public class TipoExame {
     public TipoExame() {
     }
 
+    public TipoExame( Long idTipoExame, String nomeExame,String obrigatorioRiscoTipoExame,
+            String descricaoExame) {
+        this.idTipoExame = idTipoExame;
+        this.nomeExame = nomeExame;
+        this.obrigatorioRiscoTipoExame = obrigatorioRiscoTipoExame;
+        this.descricaoExame = descricaoExame;
+    }
+
     public Long getIdTipoExame() {
         return idTipoExame;
     }

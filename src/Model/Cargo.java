@@ -10,6 +10,13 @@ public class Cargo {
     public Cargo() {
     }
 
+    public Cargo(Long idCargo, String nomeCargo, String nivelRiscoCargo, String descricaoCargo) {
+        this.idCargo = idCargo;
+        this.nomeCargo = nomeCargo;
+        this.nivelRiscoCargo = nivelRiscoCargo;
+        this.descricaoCargo = descricaoCargo;
+    }
+
     public Long getIdCargo() {
         return idCargo;
     }

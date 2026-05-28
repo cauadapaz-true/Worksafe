@@ -29,6 +29,10 @@ public class Main {
     private static final String RESULTADO = "Resultado: ";
     private static final String ID_ASO = "ID ASO: ";
     private static final String CPF_COLABORADOR = "CPF do colaborador: ";
+    private static final String OPCAO_INVALIDA = "\nOpção inválida.";
+    private static final String ESCOLHA_OPCAO = "\nEscolha uma opção: ";
+    private static final String VOLTANDO_MENU = "\nVoltando ao Menu Principal...";
+    private static final String VOLTAR_MENU_PRINCIPAL = "0 - Voltar ao Menu Principal";
 
     private static final ColaboradorService colaboradorService = new ColaboradorService();
     private static final AsoService asoService = new AsoService();
@@ -36,9 +40,9 @@ public class Main {
     private static final CargoService cargoService = new CargoService();
     private static final MedicoService medicoService = new MedicoService();
     private static final ExameService exameService = new ExameService();
-    private static final ViewColaboradorCompletoService viewService =  new ViewColaboradorCompletoService();
+    private static final ViewColaboradorCompletoService viewService = new ViewColaboradorCompletoService();
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         Scanner scanner = new Scanner(System.in);
         int opcaoPrincipal = -1;
@@ -46,28 +50,38 @@ public class Main {
         while (opcaoPrincipal != 0) {
 
             System.out.println("\n=================================");
-            System.out.println("    WorkSafe - Menu Principal");
+            System.out.println("             WorkSafe              ");
             System.out.println("=================================");
             System.out.println("1 - Módulo de Colaboradores");
             System.out.println("2 - Módulo de ASOs");
             System.out.println("3 - Módulo de Exames");
             System.out.println("0 - Sair do Sistema");
             System.out.print("\nEscolha um módulo: ");
+
             opcaoPrincipal = scanner.nextInt();
             scanner.nextLine();
 
             try {
+
                 switch (opcaoPrincipal) {
+
                     case 1 -> menuColaboradores(scanner);
+
                     case 2 -> menuAsos(scanner);
+
                     case 3 -> menuExames(scanner);
+
                     case 0 -> System.out.println("\nSistema encerrado.");
-                    default -> System.out.println("\nOpção inválida.");
+
+                    default -> System.out.println(OPCAO_INVALIDA);
                 }
+
             } catch (Exception e) {
+
                 System.out.println("\nERRO: " + e.getMessage());
             }
         }
+
         scanner.close();
     }
 
@@ -86,9 +100,9 @@ public class Main {
             System.out.println("5 - Deletar colaborador");
             System.out.println("6 - Relatório completo");
             System.out.println("7 - Inativar colaboradores com ASO vencido");
-            System.out.println("0 - Voltar ao Menu Principal");
+            System.out.println(VOLTAR_MENU_PRINCIPAL);
 
-            System.out.print("\nEscolha uma opção: ");
+            System.out.print(ESCOLHA_OPCAO);
 
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -111,15 +125,9 @@ public class Main {
 
                     case 7 -> inativarColaboradoresAsoVencido();
 
-                    case 0 ->
-                            System.out.println(
-                                    "\nVoltando ao Menu Principal..."
-                            );
+                    case 0 -> System.out.println(VOLTANDO_MENU);
 
-                    default ->
-                            System.out.println(
-                                    "\nOpção inválida."
-                            );
+                    default -> System.out.println(OPCAO_INVALIDA);
                 }
 
             } catch (IllegalArgumentException e) {
@@ -144,8 +152,11 @@ public class Main {
     }
 
     private static void menuAsos(Scanner scanner) {
+
         int opcao = -1;
+
         while (opcao != 0) {
+
             System.out.println("\n--- Módulo de ASOs ---");
             System.out.println("1 - Inserir ASO");
             System.out.println("2 - Listar ASOs");
@@ -153,40 +164,56 @@ public class Main {
             System.out.println("4 - Atualizar resultado ASO");
             System.out.println("5 - Deletar ASO");
             System.out.println("6 - Verificar status ASO");
-            System.out.println("0 - Voltar ao Menu Principal");
-            System.out.print("\nEscolha uma opção: ");
+            System.out.println(VOLTAR_MENU_PRINCIPAL);
+
+            System.out.print(ESCOLHA_OPCAO);
 
             opcao = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcao) {
+
                 case 1 -> inserirAso(scanner);
+
                 case 2 -> listarAsos();
+
                 case 3 -> buscarAso(scanner);
+
                 case 4 -> atualizarResultado(scanner);
+
                 case 5 -> deletarAso(scanner);
+
                 case 6 -> verificarStatusAso(scanner);
-                case 0 -> System.out.println("\nVoltando ao Menu Principal...");
-                default -> System.out.println("\nOpção inválida.");
+
+                case 0 -> System.out.println(VOLTANDO_MENU);
+
+                default -> System.out.println(OPCAO_INVALIDA);
             }
         }
     }
 
     private static void menuExames(Scanner scanner) {
+
         int opcao = -1;
+
         while (opcao != 0) {
+
             System.out.println("\n--- Módulo de Exames ---");
             System.out.println("1 - Listar exames de um ASO");
-            System.out.println("0 - Voltar ao Menu Principal");
-            System.out.print("\nEscolha uma opção: ");
+            System.out.println(VOLTAR_MENU_PRINCIPAL);
+
+            System.out.print(ESCOLHA_OPCAO);
 
             opcao = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcao) {
+
                 case 1 -> listarExames(scanner);
-                case 0 -> System.out.println("\nVoltando ao Menu Principal...");
-                default -> System.out.println("\nOpção inválida.");
+
+                case 0 -> System.out.println(VOLTANDO_MENU);
+
+                default -> System.out.println(OPCAO_INVALIDA);
             }
         }
     }

@@ -26,9 +26,8 @@ public class Colaborador {
     public Colaborador() {
     }
 
-    public Colaborador(Long idColaborador, String nome, String cpf,
-                       LocalDate dataNascimento, LocalDate dataAdmissao,
-                       String status, Long idEmpresa, Long idCargo) {
+    public Colaborador(Long idColaborador, String nome, String cpf, LocalDate dataNascimento,
+                       LocalDate dataAdmissao, String status,  Long idEmpresa) {
 
         this.idColaborador = idColaborador;
         this.nome = nome;
@@ -37,7 +36,6 @@ public class Colaborador {
         this.dataAdmissao = dataAdmissao;
         this.status = status;
         this.idEmpresa = idEmpresa;
-        this.idCargo = idCargo;
     }
 
     public Long getIdColaborador() {

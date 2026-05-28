@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexao {
 
     private static Conexao instance;
-    private Connection conexao;
+    private Connection connection;
 
     private static final String URL =
             "jdbc:postgresql://db.bvppxnzbndjmbysrygxt.supabase.co:5432/postgres?sslmode=require";
@@ -29,8 +29,8 @@ public class Conexao {
     private void conectar() {
         try {
 
-            if (conexao == null || conexao.isClosed()) {
-                conexao = DriverManager.getConnection(URL, USER, PASSWORD);
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
             }
 
         } catch (SQLException ex) {
@@ -42,7 +42,7 @@ public class Conexao {
 
         try {
 
-            if (conexao == null || conexao.isClosed()) {
+            if (connection == null || connection.isClosed()) {
                 conectar();
             }
 
@@ -50,15 +50,15 @@ public class Conexao {
             throw new RuntimeException("Erro ao validar conexão: " + ex.getMessage(), ex);
         }
 
-        return conexao;
+        return connection;
     }
 
     public void fecharConexao() {
 
         try {
 
-            if (conexao != null && !conexao.isClosed()) {
-                conexao.close();
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
             }
 
         } catch (SQLException ex) {

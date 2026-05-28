@@ -10,6 +10,13 @@ public class Medico {
     public Medico() {
     }
 
+    public Medico( Long idMedico, String nomeMedico, String crmMedico, String especialidadeMedico) {
+        this.idMedico = idMedico;
+        this.nomeMedico = nomeMedico;
+        this.crmMedico = crmMedico;
+        this.especialidadeMedico = especialidadeMedico;
+    }
+
     public Long getIdMedico() {
         return idMedico;
     }

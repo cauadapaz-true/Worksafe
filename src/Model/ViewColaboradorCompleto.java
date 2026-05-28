@@ -3,15 +3,10 @@ package Model;
 public class ViewColaboradorCompleto {
 
     private Long idColaborador;
-
     private String nome;
-
     private String cpf;
-
     private String status;
-
     private String razaoSocial;
-
     private String nomeCargo;
 
     public ViewColaboradorCompleto() {
