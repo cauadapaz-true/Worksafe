@@ -192,37 +192,6 @@ public class Main {
         }
     }
 
-    private static void exibirMenu() {
-
-        System.out.println("\n=================================");
-        System.out.println("    WorkSafe - Gestão de ASO");
-        System.out.println("=================================");
-
-        System.out.println("1 - Inserir colaborador");
-        System.out.println("2 - Listar colaboradores");
-        System.out.println("3 - Buscar colaborador por CPF");
-        System.out.println("4 - Atualizar status");
-        System.out.println("5 - Deletar colaborador");
-        System.out.println("6 - Relatório completo colaboradores");
-
-        System.out.println();
-
-        System.out.println("7 - Inserir ASO");
-        System.out.println("8 - Listar ASOs");
-        System.out.println("9 - Buscar ASO por ID");
-        System.out.println("10 - Atualizar resultado ASO");
-        System.out.println("11 - Deletar ASO");
-        System.out.println("12 - Verificar status ASO");
-
-        System.out.println();
-
-        System.out.println("13 - Listar exames");
-
-        System.out.println();
-
-        System.out.println("0 - Sair");
-    }
-
     private static void inserirColaborador(Scanner scanner) {
 
         Colaborador colaborador = new Colaborador();
