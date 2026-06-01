@@ -399,10 +399,12 @@ public class Main {
         System.out.print("Data vencimento (AAAA-MM-DD): ");
         aso.setDataVencimento(LocalDate.parse(scanner.nextLine()));
 
+
+        System.out.println("Tipos disponiveis: admissional, periodico, demissional, retorno, mudanca_funcao");
         System.out.print("Tipo ASO: ");
         aso.setTipoAso(scanner.nextLine());
 
-        System.out.print("Resultado (APTO/INAPTO): ");
+        System.out.print("Resultado (Apto/Inapto): ");
         aso.setResultado(scanner.nextLine());
 
         selecionarColaborador(scanner, aso);
