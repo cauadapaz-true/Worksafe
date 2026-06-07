@@ -155,6 +155,7 @@ public class AsoDAO {
         return null;
     }
 
+    //Function
     public String verificarStatusAso(String cpf) {
 
         String sql = "SELECT fn_status_aso(?)";

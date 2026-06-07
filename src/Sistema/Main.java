@@ -522,7 +522,7 @@ public class Main {
 
         scanner.nextLine();
 
-        System.out.print("Novo resultado: ");
+        System.out.print("Novo resultado (Apto/Inapto): ");
 
         String resultado = scanner.nextLine();
 
